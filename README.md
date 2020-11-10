@@ -4,14 +4,19 @@ nutil is a c library for converting converting arbitay long numbers
 
 ## Build
 ```sh
-make all    # builds a shared and static library
-make test   # builds the test executeable
+make all     # builds a shared and static library
+make test    # builds the test executeable
+make example # builds an example executable
 ```
 
-when linking nutil into your executeable, link it with -lm (math.h) and -lgmp (GNU Multiple Precision Arithmetic Library)
+when linking nutil into your executable, link it with -lm (math.h) and -lgmp (GNU Multiple Precision Arithmetic Library)
 
 ## Usage
 For example code, look at the file example.c, its a program thats print numbers in decimal
+```sh
+> ./example ffff 16
+66535
+```
 
 for more documentation you should look at nutil.h 
 
