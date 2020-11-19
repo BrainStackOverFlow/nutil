@@ -1,17 +1,19 @@
 CC 		:= 	gcc
 NAME    :=  nutil
-SNAME   :=  $(NAME).a
-DNAME   :=  $(NAME).so
+SNAME   :=  lib$(NAME).a
+DNAME   :=  lib$(NAME).so
 SRC     :=  nutil.c
 OBJ    	:=  $(SRC:%.c=%.o)
 TESTSRC	:= 	test.c
 TESTOBJ := 	$(TESTSRC:%.c=%.o)
 EXMSRC	:= 	example.c
 EXMOBJ  := 	$(EXMSRC:%.c=%.o)
-CFLAGS  :=  -Wall -Wextra -pedantic
+CFLAGS  :=  -O2 -Wall -Wextra -pedantic -Werror-implicit-function-declaration
 LIBS 	:= 	-lm -lgmp
 
-.PHONY: all clean fclean re static dynamic test example
+PREFIX = /usr/local
+
+.PHONY: all static dynamic install uninstall clean fclean re 
 
 all: static dynamic
 
@@ -32,6 +34,14 @@ test: $(TESTOBJ) $(SNAME)
 
 example: $(EXMOBJ) $(SNAME)
 	$(CC) $(LDFLAGS) $(LDLIBS) $^ -o $@ $(LIBS)
+
+install: $(SNAME) $(DNAME)
+	mv $^ $(PREFIX)/lib
+	cp nutil.h $(PREFIX)/include
+
+uninstall:
+	$(RM) $(PREFIX)/lib/$(SNAME) $(PREFIX)/lib/$(DNAME)
+	$(RM) $(PREFIX)/include/nutil.h
 
 clean:
 	$(RM) $(OBJ) $(TESTOBJ) $(EXMOBJ)
