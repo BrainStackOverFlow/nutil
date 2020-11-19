@@ -6,18 +6,22 @@ nutil is a c library for converting converting arbitrary long numbers
 ```sh
 make all        # builds a shared and static library
 make install    # builds and intalls the shared and static library and the headers
-make test       # builds the test executeable
-make example    # builds the example executeable
+make test       # builds the test executable
+make example    # builds the example executable
 
 make uninstall  # deletes the library and the headers
 make clean      # deletes intermediate compilation files
 make fclean     # deletes all the output files from the compilation
 ```
 
-when linking nutil into your executeable, link it with -lm (math.h) and -lgmp (GNU Multiple Precision Arithmetic Library)
+when linking nutil into your executable, link it with -lm (math.h) and -lgmp (GNU Multiple Precision Arithmetic Library)
 
 ## Usage
 For example code, look at the file example.c, its a program thats print numbers in decimal
+```sh
+> ./example ffff 16
+66535
+```
 
 for more documentation you should look at nutil.h 
 

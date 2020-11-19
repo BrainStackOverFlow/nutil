@@ -19,10 +19,10 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
 
-    The purpose of this library: convert arbitary long numbers from base n to base m.
-                                 numbers are are represented by char strings in the ascii format
-                                 the library doesnt handle number prefixes like '0xnnnn' or onnnn
-                                 this library supports number in base36 (0-9, a-z)
+    The purpose of this library: Convert arbitary long numbers from base n to base m.
+                                 Numbers are represented by char strings in the ascii format,
+                                 the library doesn't handle number prefixes like '0xnnnn' or '0nnnn'
+                                 this library supports numbers in base36 (0-9, a-z)
                                  outputted alphabetical characters are lowercase
     
     Requirements: libc (c standard lib)
@@ -39,7 +39,7 @@ extern "C" {
 #include <stddef.h>
 
 /**
- * @brief returns the required memory that is needed for represting the number that is inside <src> (which is in base <src_base>) in base <dst_base>. excludes the nul char
+ * @brief returns the amount of memory required for the number in <src> (which is in base <src_base>) at base of <dst_base>. excludes the nul char
  * 
  * @param src nul terminated string
  * @param src_base integer between 2 - 36
@@ -49,7 +49,7 @@ extern "C" {
 extern size_t nutil_reqmem(const char* src, int src_base, int dst_base);
 
 /**
- * @brief convert the number that is inside <src> which is in base <src_base> into base <dst_base>. doesnt add nul at the end
+ * @brief converts the number in <src> which is in base <src_base> into base <dst_base>. doesn't add nul at the end
  * 
  * @param src nul terminated string
  * @param dst buffer that the funcion writes into
